@@ -63,4 +63,5 @@ const Home = () =>{
 
 export default Home;
 
-Step 5: Run this command (npm run dev) in terminal, And that's it, Now whenever we click the link to /about, you’ll see a nice loading spinner for 3 seconds. 
+Step 5:
+ Run this command (npm run dev) in terminal, And that's it, Now whenever we click the link to /about, you’ll see a nice loading spinner for 3 seconds. 
