@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Title: How to handle loading Screens with Tailwind Spinner in Nextjs (App Router)
 
-## Getting Started
+Step-:1 How Loading Works in App Router?
 
-First, run the development server:
+First, I have created a Spinner component. I placed in app/components/Spinner.tsx.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Code: 
+const Spinner = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full border-4 border-orange-500 border-t-transparent w-12 h-12"></div>
+    </div>
+  );
+};
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+export default Spinner;
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Step-:2 Then, Making a page that loads slowly 
+For Delay i have created  setTimeOut function.
 
-## Learn More
+Code:
+const About = async() =>{
+    await new Promise((resolve)=>setTimeout(resolve,3000))
+    return (
+        <div className="text-xl p-4">
+            About page
+        </div>
+    )
+}
 
-To learn more about Next.js, take a look at the following resources:
+export default About;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Step:3 Next, I have created a loading.tsx file in the same /about folder 
 
-## Deploy on Vercel
+Code:
+import Spinner from "../components/Spinner"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+const loading = () => {
+  return (
+    <div>
+        <Spinner/>
+    </div>
+  )
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export default loading;
+
+Step:4 Finally, in the homepage (app/page.tsx), I have added a link to the About page so I could test it..
+
+Code:
+const Home = () =>{
+    return (
+        <div className="p-6">
+            <h1 className="text-4xl p-4">Home page</h1>
+            <p>
+                <a href="/about" className="p-4 text-blue-600 underline">Go to about page</a>
+            </p>
+        </div>
+    )
+}
+
+export default Home;
+
+Step:5 Run this command (npm run dev) in terminal, And that's it, Now whenever you click the link to /about, you’ll see a nice loading spinner for 3 seconds. 
