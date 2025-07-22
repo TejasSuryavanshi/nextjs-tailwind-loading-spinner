@@ -1,6 +1,6 @@
 Title: How to handle loading Screens with Tailwind Spinner in Nextjs (App Router)
 
-Step-:1 How Loading Works in App Router?
+Step 1: How Loading Works in App Router?
 
 First, I have created a Spinner component. I placed in app/components/Spinner.tsx.
 
@@ -16,7 +16,7 @@ const Spinner = () => {
 export default Spinner;
 
 
-Step-:2 Then, Making a page that loads slowly 
+Step 2: Then, Making a page that loads slowly 
 For Delay i have created  setTimeOut function.
 
 Code:
@@ -32,7 +32,7 @@ const About = async() =>{
 export default About;
 
 
-Step:3 Next, I have created a loading.tsx file in the same /about folder 
+Step 3: Next, I have created a loading.tsx file in the same /about folder 
 
 Code:
 import Spinner from "../components/Spinner"
@@ -47,7 +47,7 @@ const loading = () => {
 
 export default loading;
 
-Step:4 Finally, in the homepage (app/page.tsx), I have added a link to the About page so I could test it..
+Step 4: Finally, in the homepage (app/page.tsx), I have added a link to the About page so I could test it..
 
 Code:
 const Home = () =>{
@@ -63,4 +63,4 @@ const Home = () =>{
 
 export default Home;
 
-Step:5 Run this command (npm run dev) in terminal, And that's it, Now whenever you click the link to /about, you’ll see a nice loading spinner for 3 seconds. 
+Step 5: Run this command (npm run dev) in terminal, And that's it, Now whenever we click the link to /about, you’ll see a nice loading spinner for 3 seconds. 
